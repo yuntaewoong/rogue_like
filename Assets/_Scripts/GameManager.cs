@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour {
     private List<Enemy> enemies;
     private bool enemiesMoving;
     private Text levelText;
-    private GameObject levelImage;
+    public GameObject levelImage;
     private bool doingSetup;
 
 

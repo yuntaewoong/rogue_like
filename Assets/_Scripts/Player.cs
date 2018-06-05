@@ -59,18 +59,27 @@ public class Player : MovingObject
 
     protected override void AttemptMove <T> (int xDir, int yDir)
     {
-        food--;
-        foodText.text = "Food: " + food;
 
-        base.AttemptMove<T>(xDir, yDir);
-
-        RaycastHit2D hit;
-        if(Move (xDir,yDir,out hit))
+        if (food > 0 && !GameManager.instance.levelImage.activeInHierarchy)
         {
-            SoundManager.instance.RandomizeSfx(moveSound1, moveSound2);
+            food--;
         }
+        
 
-        CheckIfGameOver();
+        foodText.text = "Food: " + food;
+        if (!GameManager.instance.levelImage.activeInHierarchy)
+        {
+            base.AttemptMove<T>(xDir, yDir);
+
+
+            RaycastHit2D hit;
+            if (Move(xDir, yDir, out hit))
+            {
+                SoundManager.instance.RandomizeSfx(moveSound1, moveSound2);
+            }
+
+            CheckIfGameOver();
+        }
 
         GameManager.instance.playersTurn = false;
     }
