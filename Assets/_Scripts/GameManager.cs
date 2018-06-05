@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Collections.Generic;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 
 public class GameManager : MonoBehaviour {
 
@@ -14,7 +15,7 @@ public class GameManager : MonoBehaviour {
     [HideInInspector] public bool playersTurn = true;
 
 
-    private int level = 1;
+    private int level;
     private List<Enemy> enemies;
     private bool enemiesMoving;
     private Text levelText;
@@ -33,14 +34,23 @@ public class GameManager : MonoBehaviour {
         DontDestroyOnLoad(gameObject);
         enemies = new List<Enemy>();
         boardScript = GetComponent<BoardManager>();
-        InitGame();
+        
 	}
 
-    private void OnLevelWasLoaded(int index)
+    void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
     {
         level++;
-
         InitGame();
+    }
+
+    void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnLevelFinishedLoading;
+    }
+
+    void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnLevelFinishedLoading;
     }
 
     void InitGame()

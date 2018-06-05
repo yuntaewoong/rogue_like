@@ -22,7 +22,6 @@ public class Player : MovingObject
 
     private Animator animator;
     private int food;
-    private Vector2 touchOrigin = -Vector2.one;
 	// Use this for initialization
 	protected override void Start ()
     {
@@ -116,6 +115,10 @@ public class Player : MovingObject
     {
         animator.SetTrigger("playerHit");
         food -= loss;
+        if (food <= 0)
+        {
+            food = 0;
+        }
         foodText.text = "-" + loss + " Food: " + food;
         CheckIfGameOver();
     }
