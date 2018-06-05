@@ -21,7 +21,7 @@ food 수치를 알려준다.
 적은 player와 한칸차이의 공간에 있을때 공격이 가능한데  
 적이 공격을 할때 player는 피격 애니메이션을 적은 공격 애니메이션을  
 실행하게 된다.  
-![screenshot_5](https://user-images.githubusercontent.com/38284288/40975634-85dcfe68-6906-11e8-8017-bf9fb5d3b24a.png)
+![screenshot_5](https://user-images.githubusercontent.com/38284288/40975634-85dcfe68-6906-11e8-8017-bf9fb5d3b24a.png)  
 **screenshot5 풀숲 제거**  
 player가 풀숲에 붙으면 제거 애니메이션을 실행하면서  
 풀숲을 제거할 수 있게 된다.  
